@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  server-template:
+    image: server-template
+    container_name: server-template
+    command: poetry run python server/main.py
+    volumes:
+      - ./config/config.yml:/app/config/config.yml:ro
+    restart: on-failure
+    platform: linux/amd64
+    build:
+      dockerfile: Dockerfile
